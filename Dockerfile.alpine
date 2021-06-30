@@ -7,14 +7,17 @@
 # https://github.com/teddysun/v2ray-plugin
 # https://github.com/teddysun/xray-plugin
 
-FROM alpine:edge
+FROM --platform=${TARGETPLATFORM} alpine:edge
+LABEL maintainer="Teddysun <i@teddysun.com>"
 
+ARG TARGETPLATFORM
 WORKDIR /root
 COPY v2ray-plugin.sh /root/v2ray-plugin.sh
 COPY xray-plugin.sh /root/xray-plugin.sh
+COPY shadowsocks-rust-alpine.sh /root/shadowsocks-rust-alpine.sh
 COPY config_sample.json /etc/shadowsocks-rust/config.json
 RUN set -ex \
-	&& runDeps="git build-base c-ares-dev autoconf automake libev-dev libtool libsodium-dev linux-headers mbedtls-dev pcre-dev openssl-dev cargo" \
+	&& runDeps="git build-base c-ares-dev autoconf automake libev-dev libtool libsodium-dev linux-headers mbedtls-dev pcre-dev" \
 	&& apk add --no-cache --virtual .build-deps ${runDeps} \
 	&& mkdir -p /root/obfs \
 	&& cd /root/obfs \
@@ -23,15 +26,10 @@ RUN set -ex \
 	&& ./autogen.sh \
 	&& ./configure --prefix=/usr --disable-documentation \
 	&& make install \
-	&& mkdir -p /root/rust \
-	&& cd /root/rust \
-	&& VERSION=$(wget --no-check-certificate -qO- https://api.github.com/repos/shadowsocks/shadowsocks-rust/releases/latest | grep 'tag_name' | cut -d\" -f4) \
-	&& git clone -b ${VERSION} --depth=1 https://github.com/shadowsocks/shadowsocks-rust.git . \
-	&& cargo build --release --features "aes-pmac-siv local-redir" --verbose \
-	&& cp -pv target/release/sslocal /usr/bin \
-	&& cp -pv target/release/ssmanager /usr/bin \
-	&& cp -pv target/release/ssserver /usr/bin \
-	&& cp -pv target/release/ssurl /usr/bin \
+	&& cd /root \
+	&& chmod +x /root/shadowsocks-rust-alpine.sh /root/v2ray-plugin.sh /root/xray-plugin.sh \
+	&& /root/shadowsocks-rust-alpine.sh "${TARGETPLATFORM}" \
+	&& rm -f /root/shadowsocks-rust-alpine.sh \
 	&& apk add --no-cache \
 		tzdata \
 		rng-tools \
@@ -42,11 +40,10 @@ RUN set -ex \
 		| xargs -r apk info --installed \
 		| sort -u) \
 	&& apk del .build-deps \
-	&& cd /root \
-	&& rm -rf /root/obfs /root/rust \
+	&& rm -rf /root/obfs \
 	&& chmod +x /root/v2ray-plugin.sh /root/xray-plugin.sh \
-	&& /root/v2ray-plugin.sh \
-	&& /root/xray-plugin.sh \
+	&& /root/v2ray-plugin.sh "${TARGETPLATFORM}" \
+	&& /root/xray-plugin.sh "${TARGETPLATFORM}" \
 	&& rm -f /root/v2ray-plugin.sh /root/xray-plugin.sh
 
 VOLUME /etc/shadowsocks-rust

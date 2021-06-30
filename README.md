@@ -1,2 +1,2 @@
-# Shadowsocks-libev
+# Shadowsocks-Rust
 TODO

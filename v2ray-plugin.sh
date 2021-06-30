@@ -1,12 +1,10 @@
 #!/bin/sh
 #
-# This is a Shell script for shadowsocks-libev based alpine with Docker image
+# This is a Shell script for shadowsocks-libev supported SIP003 plugins based alpine with Docker image
 # 
 # Copyright (C) 2019 - 2021 Teddysun <i@teddysun.com>
 #
 # Reference URL:
-# https://github.com/shadowsocks/shadowsocks-libev
-# https://github.com/shadowsocks/simple-obfs
 # https://github.com/shadowsocks/v2ray-plugin
 # https://github.com/teddysun/v2ray-plugin
 
