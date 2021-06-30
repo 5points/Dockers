@@ -1,0 +1,14 @@
+FROM --platform=$TARGETPLATFORM linuxserver/chromium
+LABEL org.opencontainers.image.authors="Kinoko"
+
+RUN apk update \
+    && apk add --no-cache font-adobe-100dpi \
+    && mkdir /usr/share/fonts/win \
+    && rm -rf /var/cache/apk/*
+
+COPY fonts /usr/share/fonts/win
+
+RUN cd /usr/share/fonts/win \
+    && chmod 777 *.ttc \
+    && fc-cache -f \
+    && fc-list

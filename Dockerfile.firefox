@@ -1,0 +1,14 @@
+FROM --platform=$TARGETPLATFORM linuxserver/firefox
+LABEL org.opencontainers.image.authors="Kinoko"
+
+RUN apt update \
+    && apt instsall -y font-adobe-100dpi \
+    && mkdir /usr/share/fonts/win \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY fonts /usr/share/fonts/win
+
+RUN cd /usr/share/fonts/win \
+    && chmod 777 *.ttc \
+    && fc-cache -f \
+    && fc-list
