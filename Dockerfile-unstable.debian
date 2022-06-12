@@ -13,7 +13,7 @@ ARG TARGETPLATFORM
 WORKDIR /root
 COPY v2ray-plugin.sh /root/v2ray-plugin.sh
 COPY xray-plugin.sh /root/xray-plugin.sh
-COPY shadowsocks-rust-debian.sh /root/shadowsocks-rust-debian.sh
+COPY unstable-shadowsocks-rust-debian.sh /root/unstable-shadowsocks-rust-debian.sh
 COPY config_sample.json /etc/shadowsocks-rust/config.json
 RUN set -ex \
 	&& apt-get update \
