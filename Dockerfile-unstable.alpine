@@ -14,7 +14,7 @@ ARG TARGETPLATFORM
 WORKDIR /root
 COPY v2ray-plugin.sh /root/v2ray-plugin.sh
 COPY xray-plugin.sh /root/xray-plugin.sh
-COPY shadowsocks-rust-alpine.sh /root/shadowsocks-rust-alpine.sh
+COPY unstable-shadowsocks-rust-alpine.sh /root/unstable-shadowsocks-rust-alpine.sh
 COPY config_sample.json /etc/shadowsocks-rust/config.json
 RUN set -ex \
 	&& runDeps="git build-base c-ares-dev autoconf automake libev-dev libtool libsodium-dev linux-headers mbedtls-dev pcre-dev" \
