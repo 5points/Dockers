@@ -17,7 +17,7 @@ if [ -z "$PLATFORM" ]; then
 else
     case "$PLATFORM" in
         linux/386)
-            ARCH="i686-unknown-linux-musl.tar.xz"
+            ARCH="i686-unknown-linux-musl"
             ;;
         linux/amd64)
             ARCH="x86_64-unknown-linux-gnu"
