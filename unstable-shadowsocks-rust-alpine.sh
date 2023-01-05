@@ -43,7 +43,7 @@ else
     esac
 fi
 [ -z "${ARCH}" ] && echo "Error: Not supported OS Architecture" && exit 1
-VERSION=$(wget --no-check-certificate -qO- https://api.github.com/repos/shadowsocks/shadowsocks-rust/releases | grep 'tag_name' | cut -d\" -f4 | head -1)
+VERSION=$(wget --no-check-certificate -qO- https://api.github.com/repos/shadowsocks/shadowsocks-rust/releases | grep 'tag_name' | grep 'alpha' | cut -d\" -f4 | head -1)
 [ -z "${VERSION}" ] && echo "Error: Get shadowsocks-rust latest version failed" && exit 1
 # Download shadowsocks-rust binary file
 SHADOWSOCKS_RUST_FILE="shadowsocks-${VERSION}.${ARCH}.tar.xz"
