@@ -13,7 +13,7 @@ COPY alpine-realm.sh /root/alpine-realm.sh
 COPY realm-server.toml /etc/realm/realm-server.toml
 
 RUN set -ex \
-        && apk add --update --no-cache curl wget ca-certificates jq tzdata \
+        && apk add --update --no-cache curl wget ca-certificates jq tzdata tar\
         && update-ca-certificates \
         && chmod +x /root/alpine-realm.sh \
         && /root/alpine-realm.sh "${TARGETPLATFORM}" \
