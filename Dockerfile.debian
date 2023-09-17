@@ -24,6 +24,5 @@ RUN set -ex \
 
 VOLUME /etc/realm
 ENV TZ=Asia/Hong_Kong
-ENV ARGS=-L=:9090/1.1.1.1:443
-EXPOSE 6060
-CMD /bin/sh -c /usr/bin/realm $ARGS
+EXPOSE 6060/tcp 6060/udp
+CMD /usr/bin/realm
