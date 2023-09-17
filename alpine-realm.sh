@@ -47,7 +47,8 @@ REALM_FILE="realm-${ARCH}.tar.gz"
 REALM_DL_FILE="https://github.com/zhboner/realm/releases/download/${REALM_VERSION}/{REALM_FILE}"
 
 echo "Downloading binary file: ${REALM_FILE}"
-wget -O ${REALM_FILE} ${REALM_DL_FILE} > /dev/null 2>&1
+#wget -O ${REALM_FILE} ${REALM_DL_FILE} > /dev/null 2>&1
+curl -skSL -o ${REALM_FILE} ${REALM_DL_FILE} > /dev/null 2>&1
 tar -xzvf ${REALM_FILE} -C /usr/bin/
 rm -vf ${REALM_FILE}
 if [ $? -ne 0 ]; then
