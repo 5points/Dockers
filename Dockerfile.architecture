@@ -17,7 +17,7 @@ RUN set -ex \
 	&& update-ca-certificates \
 	&& chmod +x /root/alpine-realm.sh \
 	&& /root/alpine-realm.sh "${TARGETPLATFORM}" \
-	&& rm -fv /root/hysteria.sh
+	&& rm -fv /root/alpine-realm.sh
 
 VOLUME /etc/realm
 ENV TZ=Asia/Hong_Kong
