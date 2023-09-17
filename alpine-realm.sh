@@ -44,7 +44,7 @@ fi
 # Download binary file
 REALM_VERSION=$(wget --no-check-certificate -qO- https://api.github.com/repos/zhboner/realm/releases/latest | grep 'tag_name' | cut -d\" -f 4)
 REALM_FILE="realm-${ARCH}.tar.gz"
-REALM_DL_FILE="https://github.com/zhboner/realm/releases/download/${REALM_VERSION}/{REALM_FILE}"
+REALM_DL_FILE="https://github.com/zhboner/realm/releases/download/${REALM_VERSION}/${REALM_FILE}"
 
 echo "Downloading binary file: ${REALM_FILE}"
 #wget -O ${REALM_FILE} ${REALM_DL_FILE} > /dev/null 2>&1
