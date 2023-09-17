@@ -13,14 +13,14 @@ COPY alpine-realm.sh /root/alpine-realm.sh
 COPY realm-server.toml /etc/realm/realm-server.toml
 
 RUN set -ex \
-        && apk add --update --no-cache curl wget ca-certificates jq tzdata tar\
-        && update-ca-certificates \
-        && chmod +x /root/alpine-realm.sh \
-        && /root/alpine-realm.sh "${TARGETPLATFORM}" \
-        && rm -fv /root/alpine-realm.sh
+	&& apk add --update --no-cache curl wget ca-certificates jq tzdata \
+	&& update-ca-certificates \
+	&& chmod +x /root/alpine-realm.sh
+	&& /root/alpine-realm.sh "${TARGETPLATFORM}" \
+	&& rm -fv /root/hysteria.sh
 
 VOLUME /etc/realm
 ENV TZ=Asia/Hong_Kong
 ENV ARGS=-L=:9090/1.1.1.1:443
-EXPOSE 6060
+EXPOSE map[6060/tcp:{} 6060/udp:{}]
 CMD [ "/bin/sh" "-c" "/usr/bin/realm ${ARGS}" ]
