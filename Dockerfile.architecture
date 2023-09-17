@@ -15,7 +15,7 @@ COPY realm-server.toml /etc/realm/realm-server.toml
 RUN set -ex \
 	&& apk add --update --no-cache curl wget ca-certificates jq tzdata \
 	&& update-ca-certificates \
-	&& chmod +x /root/alpine-realm.sh
+	&& chmod +x /root/alpine-realm.sh \
 	&& /root/alpine-realm.sh "${TARGETPLATFORM}" \
 	&& rm -fv /root/hysteria.sh
 
