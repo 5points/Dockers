@@ -22,5 +22,6 @@ RUN set -ex \
 VOLUME /etc/realm
 ENV TZ=Asia/Hong_Kong
 ENV ARGS=-L=:9090/1.1.1.1:443
-EXPOSE map[6060/tcp:{} 6060/udp:{}]
+EXPOSE 6060/tcp:{} 
+EXPOSE 6060/udp:{}
 CMD [ "/bin/sh" "-c" "/usr/bin/realm ${ARGS}" ]
