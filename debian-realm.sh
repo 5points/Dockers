@@ -45,14 +45,14 @@ REALM_VERSION=$(wget --no-check-certificate -qO- https://api.github.com/repos/zh
 [ -z "${REALM_VERSION}" ] && echo "Error: Get realm latest version failed" && exit 1
 # Download binary file
 REALM_FILE="realm-${ARCH}.tar.gz"
-REALM_DL_FILE="https://github.com/zhboner/realm/releases/download/${REALM_VERSION}/{REALM_FILE}"
-echo "Downloading shadowsocks-rust binary file: ${SHADOWSOCKS_RUST_FILE}"
+REALM_DL_FILE="https://github.com/zhboner/realm/releases/download/${REALM_VERSION}/${REALM_FILE}"
+echo "Downloading shadowsocks-rust binary file: ${REALM_FILE}"
 wget -O ${REALM_FILE} ${REALM_DL_FILE} > /dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Error: Failed to download realm binary file: ${REALM_FILE}" && exit 1
 fi
 echo "Download realm binary file: ${REALM_FILE} completed"
-echo "Extracting ${SHADOWSOCKS_RUST_FILE}..."
+echo "Extracting ${REALM_FILE}..."
 tar -zxvf ${REALM_FILE} -C /usr/bin
 chmod +x /usr/bin/realm
 rm -vf ${REALM_FILE}
