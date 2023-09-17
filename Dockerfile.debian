@@ -14,7 +14,7 @@ COPY realm-server.toml /etc/realm/realm-server.toml
 RUN set -ex \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends curl wget ca-certificates jq git ca-certificates xz-utils build-essential autoconf libtool libssl-dev libpcre3-dev libev-dev automake \
-    && chmod +x /root/alpine-realm.sh \
+	&& chmod +x /root/debian-realm.sh \
 	&& /root/debian-realm.sh "${TARGETPLATFORM}" \
 	&& rm -vf /root/debian-realm.sh
 	&& apt-get -y remove build-essential git autoconf libtool libssl-dev libpcre3-dev automake \
