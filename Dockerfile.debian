@@ -1,0 +1,29 @@
+# Dockerfile for hysteria based alpine
+# Copyright (C) 2023 5points
+# Reference URL:
+# https://github.com/zhboner/realm
+#
+# Thanks: Teddysun <i@teddysun.com>
+FROM --platform=${TARGETPLATFORM} debian:bullseye-slim
+LABEL maintainer="5points"
+
+ARG TARGETPLATFORM
+WORKDIR /root
+COPY debian-realm.sh /root/debian-realm.sh
+COPY realm-server.toml /etc/realm/realm-server.toml
+RUN set -ex \
+	&& apt-get update \
+	&& apt-get install -y --no-install-recommends curl wget ca-certificates jq git ca-certificates xz-utils build-essential autoconf libtool libssl-dev libpcre3-dev libev-dev automake \
+    && chmod +x /root/alpine-realm.sh \
+	&& /root/debian-realm.sh "${TARGETPLATFORM}" \
+	&& rm -vf /root/debian-realm.sh
+	&& apt-get -y remove build-essential git autoconf libtool libssl-dev libpcre3-dev automake \
+	&& apt-get -y autoremove \
+	&& apt-get -y clean \
+	&& rm -rf /var/lib/apt/lists/*
+
+VOLUME /etc/realm
+ENV TZ=Asia/Hong_Kong
+ENV ARGS=-L=:9090/1.1.1.1:443
+EXPOSE 6060
+CMD [ "/bin/sh" "-c" "/usr/bin/realm ${ARGS}" ]
