@@ -18,7 +18,7 @@ else
             ARCH=""
             ;;
         linux/amd64)
-            ARCH="x86_64-unknown-linux-musl"
+            ARCH="x86_64-unknown-linux-gnu"
             ;;
         linux/arm/v6)
             ARCH="arm-unknown-linux-musleabi"
@@ -27,7 +27,7 @@ else
             ARCH="armv7-unknown-linux-musleabihf"
             ;;
         linux/arm64|linux/arm64/v8)
-            ARCH="aarch64-unknown-linux-musl"
+            ARCH="aarch64-unknown-linux-gnu"
             ;;
         linux/ppc64le)
             ARCH=""
