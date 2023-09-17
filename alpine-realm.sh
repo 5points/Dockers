@@ -48,7 +48,7 @@ REALM_DL_FILE="https://github.com/zhboner/realm/releases/download/${REALM_VERSIO
 
 echo "Downloading binary file: ${REALM_FILE}"
 wget -O ${REALM_FILE} ${REALM_DL_FILE} > /dev/null 2>&1
-tar -zxvf ${REALM_FILE} -C /usr/bin/
+tar -xvf ${REALM_FILE} -C /usr/bin/
 rm -vf ${REALM_FILE}
 if [ $? -ne 0 ]; then
     echo "Error: Failed to download binary file: ${REALM_FILE}" && exit 1
