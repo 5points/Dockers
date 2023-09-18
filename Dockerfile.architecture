@@ -21,31 +21,6 @@ RUN set -ex \
 
 VOLUME /etc/realm
 ENV TZ=Asia/Hong_Kong
-ENV ARGS=-L=:9090/1.1.1.1:443
-EXPOSE 6060
-# Dockerfile for hysteria based alpine
-# Copyright (C) 2023 5points
-# Reference URL:
-# https://github.com/zhboner/realm
-#
-# Thanks: Teddysun <i@teddysun.com>
-FROM --platform=${TARGETPLATFORM} alpine:latest
-LABEL maintainer="5points"
-
-ARG TARGETPLATFORM
-WORKDIR /root
-COPY alpine-realm.sh /root/alpine-realm.sh
-COPY realm-server.toml /etc/realm/realm-server.toml
-
-RUN set -ex \
-	&& apk add --update --no-cache curl wget ca-certificates jq tzdata \
-	&& update-ca-certificates \
-	&& chmod +x /root/alpine-realm.sh \
-	&& /root/alpine-realm.sh "${TARGETPLATFORM}" \
-	&& rm -fv /root/alpine-realm.sh
-
-VOLUME /etc/realm
-ENV TZ=Asia/Hong_Kong
 EXPOSE 6060/tcp 6060/udp
 
 ENTRYPOINT ["/usr/bin/realm"]
