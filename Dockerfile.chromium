@@ -9,6 +9,6 @@ RUN apk update \
 COPY fonts /usr/share/fonts/win
 
 RUN cd /usr/share/fonts/win \
-    && chmod 777 *.ttc \
+    && chmod 777 *.otf \
     && fc-cache -f \
     && fc-list
