@@ -1,2 +1,2 @@
-# Firefox from base on linuxserver.io
+# Browsers in containers from base on linuxserver.io
 TODO
