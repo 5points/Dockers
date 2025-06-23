@@ -1,10 +1,10 @@
 # Dockerfile for realm based alpine
-# Copyright (C) 2024 5points
+# Copyright (C) 2025 5points
 # Reference URL:
 # https://github.com/zhboner/realm
 #
 # Thanks: Teddysun <i@teddysun.com>
-FROM --platform=${TARGETPLATFORM} alpine:latest
+FROM alpine:latest
 LABEL maintainer="5points"
 
 ARG TARGETPLATFORM
