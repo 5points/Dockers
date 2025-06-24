@@ -1,6 +1,6 @@
 [log]
 level = "warn"
-output = "/etc/realm/realm.log"
+output = "/dev/stdout"
 
 [network]
 no_tcp = false
