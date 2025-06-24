@@ -37,6 +37,9 @@ else
         linux/mips64le)
             ARCH="mips64el-unknown-linux-gnuabi64"
             ;;
+        linux/riscv64)
+            ARCH="riscv64gc-unknown-linux-gnu"
+            ;;
         linux/ppc64le)
             ARCH=""
             ;;
