@@ -15,7 +15,6 @@ COPY realm-server.toml /etc/realm/realm-server.toml
 RUN set -ex \
 	&& runDeps="curl wget ca-certificates jq tar" \
 	&& apk add --update --no-cache --virtual .build-deps ${runDeps} \
-        && apk add --update --no-cache tzdata \
 	&& update-ca-certificates \
 	&& chmod +x /root/alpine-realm.sh \
 	&& /root/alpine-realm.sh "${TARGETPLATFORM}" \
@@ -23,7 +22,6 @@ RUN set -ex \
 	&& apk del .build-deps
 
 WORKDIR /usr/bin/
-ENV TZ=Asia/Hong_Kong
 EXPOSE 6060/tcp 6060/udp
 
 ENTRYPOINT ["/usr/bin/realm"]
