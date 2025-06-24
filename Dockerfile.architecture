@@ -13,8 +13,9 @@ COPY alpine-realm.sh /root/alpine-realm.sh
 COPY realm-server.toml /etc/realm/realm-server.toml
 
 RUN set -ex \
-	&& runDeps="curl wget ca-certificates jq tzdata tar" \
+	&& runDeps="curl wget ca-certificates jq tar" \
 	&& apk add --update --no-cache --virtual .build-deps ${runDeps} \
+        && apk add --update --no-cache tzdata \
 	&& update-ca-certificates \
 	&& chmod +x /root/alpine-realm.sh \
 	&& /root/alpine-realm.sh "${TARGETPLATFORM}" \
