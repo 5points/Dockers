@@ -2,7 +2,7 @@
 #
 # This is a Shell script for shadowsocks-rust based alpine with Docker image
 # 
-# Copyright (C) 2019 - 2021 Teddysun <i@teddysun.com>
+# Copyright (C) 2019 - 2025 Teddysun <i@teddysun.com>
 #
 # Reference URL:
 # https://github.com/shadowsocks/shadowsocks-rust
@@ -33,6 +33,9 @@ else
             ;;
         linux/ppc64le)
             ARCH=""
+            ;;
+		linux/riscv64)
+            ARCH="riscv64gc-unknown-linux-musl"
             ;;
         linux/s390x)
             ARCH=""
