@@ -25,7 +25,7 @@ cd v2ray-plugin || exit 2
 VERSION="$(git describe --tags)"
 LDFLAGS="-X main.VERSION=$VERSION -s -w"
 GCFLAGS=""
-ARCHS=( 386 amd64 arm arm64 ppc64le s390x )
+ARCHS=( 386 amd64 arm arm64 ppc64le s390x mips64le mips64 riscv64 )
 ARMS=( 6 7 )
 
 for ARCH in ${ARCHS[@]}; do
