@@ -34,7 +34,7 @@ else
         linux/ppc64le)
             ARCH=""
             ;;
-		linux/riscv64)
+        linux/riscv64)
             ARCH="riscv64gc-unknown-linux-musl"
             ;;
         linux/s390x)
