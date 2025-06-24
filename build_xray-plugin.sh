@@ -4,7 +4,7 @@
 # 
 # Supported architectures: amd64, arm32v6, arm32v7, arm64v8, i386, ppc64le, s390x
 # 
-# Copyright (C) 2021 Teddysun <i@teddysun.com>
+# Copyright (C) 2025 Teddysun <i@teddysun.com>
 #
 # Reference URL:
 # https://github.com/teddysun/xray-plugin
@@ -24,7 +24,7 @@ cd xray-plugin || exit 2
 
 VERSION="$(git describe --tags)"
 LDFLAGS="-X main.VERSION=$VERSION -s -w"
-ARCHS=( 386 amd64 arm arm64 ppc64le s390x )
+ARCHS=( 386 amd64 arm arm64 ppc64le s390x mips64le mips64 riscv64 )
 ARMS=( 6 7 )
 
 for ARCH in ${ARCHS[@]}; do
