@@ -1,0 +1,17 @@
+FROM alpine:edge
+
+RUN mkdir -p /arozos
+COPY download-arozos.sh /arozos/download-arozos.sh
+WORKDIR /arozos
+
+RUN runDeps="curl wget bash" \
+    && apk add --update --no-cache util-linux ffmpeg \
+    && apk add --update --no-cache --virtual .build-deps ${runDeps} \
+    && bash /arozos/download-arozos.sh \
+    && rm -vf /arozos/download-arozos.sh \
+    && apk del .build-deps
+
+WORKDIR /arozos
+
+CMD ["sh", "/arozos/check-start.sh", "&&", "./launcher"]
+ENTRYPOINT ["./launcher"]
