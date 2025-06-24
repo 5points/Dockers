@@ -1,5 +1,5 @@
 # Dockerfile for shadowsocks-rust based alpine
-# Copyright (C) 2020 - 2022 Teddysun <i@teddysun.com>
+# Copyright (C) 2020 - 2025 Teddysun <i@teddysun.com>
 # Reference URL:
 # https://github.com/shadowsocks/shadowsocks-rust
 # https://github.com/shadowsocks/simple-obfs
@@ -18,7 +18,7 @@ COPY shadowsocks-rust-alpine.sh /root/shadowsocks-rust-alpine.sh
 COPY config_sample.json /etc/shadowsocks-rust/config.json
 RUN set -ex \
 	&& runDeps="git build-base c-ares-dev autoconf automake libev-dev libtool libsodium-dev linux-headers mbedtls-dev pcre-dev" \
-	&& apk add --no-cache --virtual .build-deps ${runDeps} \
+	&& apk add --update --no-cache --virtual .build-deps ${runDeps} \
 	&& mkdir -p /root/obfs \
 	&& cd /root/obfs \
 	&& git clone --depth=1 https://github.com/shadowsocks/simple-obfs.git . \
