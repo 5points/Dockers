@@ -2,7 +2,7 @@
 #
 # This is a Shell script for shadowsocks-rust based debian with Docker image
 # 
-# Copyright (C) 2019 - 2021 Teddysun <i@teddysun.com>
+# Copyright (C) 2019 - 2025 Teddysun <i@teddysun.com>
 #
 # Reference URL:
 # https://github.com/shadowsocks/shadowsocks-rust
@@ -23,13 +23,19 @@ else
             ARCH="x86_64-unknown-linux-gnu"
             ;;
         linux/arm/v6)
-            ARCH=""
+            ARCH="arm-unknown-linux-musleabi"
             ;;
         linux/arm/v7)
             ARCH="arm-unknown-linux-gnueabihf"
             ;;
         linux/arm64|linux/arm64/v8)
             ARCH="aarch64-unknown-linux-gnu"
+            ;;
+        linux/mips64)
+            ARCH="mips-unknown-linux-gnu"
+            ;;
+        linux/mips64le)
+            ARCH="mips64el-unknown-linux-gnuabi64"
             ;;
         linux/ppc64le)
             ARCH=""
