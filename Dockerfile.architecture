@@ -11,7 +11,5 @@ RUN runDeps="curl wget bash" \
     && rm -vf /arozos/download-arozos.sh \
     && apk del .build-deps
 
-WORKDIR /arozos
-
-CMD ["sh", "/arozos/check-start.sh", "&&", "./launcher"]
+CMD ["sh", "/arozos/check-start.sh"]
 ENTRYPOINT ["./launcher"]
