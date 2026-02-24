@@ -16,7 +16,8 @@ COPY v2ray-plugin.sh /root/v2ray-plugin.sh
 COPY xray-plugin.sh /root/xray-plugin.sh
 COPY config_sample.json /etc/shadowsocks-libev/config.json
 RUN set -ex \
-	&& runDeps="git build-base c-ares-dev cmake libcap libev-dev libtool libsodium-dev linux-headers mbedtls-dev pcre2-dev" \
+	&& runDeps="git build-base c-ares-dev autoconf automake cmake libcap libev-dev libtool libsodium-dev linux-headers mbedtls-dev pcre-dev pcre2-dev
+" \
 	&& apk add --no-cache --virtual .build-deps ${runDeps} \
 	&& mkdir -p /root/obfs \
 	&& cd /root/obfs \
