@@ -34,9 +34,7 @@ RUN set -ex \
     && cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF -DWITH_STATIC=OFF -DCMAKE_BUILD_TYPE=Release \
     && make -j$(getconf _NPROCESSORS_ONLN) \
     && make install \
-	&& ./autogen.sh \
 	&& ls /usr/bin/ss-* | xargs -n1 setcap cap_net_bind_service+ep \
-	&& make install \
 	&& apk add --no-cache \
 		tzdata \
 		rng-tools \
