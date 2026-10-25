@@ -27,7 +27,7 @@ RUN set -ex \
 	&& make install \
 	&& mkdir -p /root/libev \
 	&& cd /root/libev \
-	&& git clone --depth=1 https://github.com/shadowsocks/shadowsocks-libev.git . \
+	&& git clone --depth=1 https://github.com/shadowsocks/shadowsocks-c.git . \
 	&& git submodule update --init --recursive \
 	&& ./autogen.sh \
 	&& ./configure --prefix=/usr --disable-documentation \
