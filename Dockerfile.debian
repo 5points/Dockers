@@ -1,4 +1,4 @@
-# Copyright (C) 2020 - 2021 Teddysun <i@teddysun.com>
+# Copyright (C) 2020 - 2026 Teddysun <i@teddysun.com>
 # Reference URL:
 # https://github.com/shadowsocks/shadowsocks-rust
 # https://github.com/shadowsocks/simple-obfs
@@ -6,7 +6,7 @@
 # https://github.com/teddysun/v2ray-plugin
 # https://github.com/teddysun/xray-plugin
 
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 LABEL maintainer="Teddysun <i@teddysun.com>"
 
 ARG TARGETPLATFORM
