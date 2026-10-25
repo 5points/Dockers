@@ -27,11 +27,11 @@ RUN set -ex \
 	&& make install \
 	&& mkdir -p /root/libev \
 	&& cd /root/libev \
-	&& git clone --depth=1 https://github.com/shadowsocks/shadowsocks-libev.git . \
+	&& git clone --depth=1 https://github.com/shadowsocks/shadowsocks-c.git . \
 	&& git submodule update --init --recursive \
 	&& mkdir -p build \
 	&& cd build \
-	&& cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF -DWITH_STATIC=OFF -DCMAKE_BUILD_TYPE=Release \
+	&& cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF -DSS_DEPENDENCY_MODE=system -DWITH_STATIC=OFF -DCMAKE_BUILD_TYPE=Release \
 	&& make -j$(getconf _NPROCESSORS_ONLN) \
 	&& make install \
 	&& ls /usr/bin/ss-* | xargs -n1 setcap cap_net_bind_service+ep \
